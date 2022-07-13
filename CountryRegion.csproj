@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <PackageId>CountryRegion</PackageId>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>1.0.0</Version>
+    <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh</Authors>
+    <Company>Tenece professional services</Company>
+    <Product>CountryRegion</Product>
+    <Description>A cascading dropdown for loading countries and associated states and local goverments.</Description>
+    <PackageProjectUrl>https://github.com/Slimcent/CountryRegion</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Slimcent/CountryRegion</RepositoryUrl>
+    <PackageTags>Country, Region, States, Local Government Area</PackageTags>
+    
+    <RepositoryType>git</RepositoryType>
+    <NeutralLanguage>en</NeutralLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="108.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+	  <None Include="Image\earth.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+</Project>
