@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ImplicitUsings>false</ImplicitUsings>
     <Nullable>enable</Nullable>
     <PackageId>CountryRegion</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
-    <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh</Authors>
+    <Version>1.0.2</Version>
+    <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh, Daberechi Ubachukwu, Alexandria Ogubuike</Authors>
     <Company>Tenece professional services</Company>
     <Product>CountryRegion</Product>
     <Description>A cascading dropdown for loading countries and associated states and local goverments.</Description>
@@ -19,13 +19,22 @@
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="RestSharp" Version="108.0.1" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+		<None Include="..\CountryRegion\images\icon.png" Pack="true" Visible="false" PackagePath="CountryRegion\images\icon.png" Link="CountryRegion\images\icon.png" />
+	</ItemGroup>
 
-  <ItemGroup>
-	  <None Include="Image\earth.png" Pack="true" PackagePath="\" />
+	<ItemGroup>
+		<None Update="CountryRegion\images\icon.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="106.13.0" />
   </ItemGroup>
 
 </Project>
