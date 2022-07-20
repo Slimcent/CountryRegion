@@ -55,11 +55,12 @@ namespace CountryRegion.Utilities
             }
 
             return Array.Empty<Response>();
-        }
+        }        
 
-
-        internal static async Task<IEnumerable<Response?>> LGAs(int stateId)
+        internal static async Task<IEnumerable<Response?>> LGAs(int countryId, int stateId)
         {
+            if (countryId != 160) return Array.Empty<Response>();
+
             dynamic? objs = await GetObject(NGSatesAndLGAsFileName);
 
             if (objs == null) return Array.Empty<Response>();
@@ -167,7 +168,6 @@ namespace CountryRegion.Utilities
             string content = response.Content;
 
             return JsonConvert.DeserializeObject<dynamic>(content);
-
         }
 
         private static RestClient GetClient()
