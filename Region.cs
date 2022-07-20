@@ -17,9 +17,9 @@ namespace CountryRegion
             return await GetRegion.States(countryId);
         }
 
-        public static async Task<IEnumerable<Response?>> GetLGAs(int stateId)
+        public static async Task<IEnumerable<Response?>> GetLGAs(int countryId, int stateId)
         {
-            return await GetRegion.LGAs(stateId);
+            return await GetRegion.LGAs(countryId, stateId);
         }
 
         public static async Task<Response?> GetLGA(int statedId, int? lgaId)
