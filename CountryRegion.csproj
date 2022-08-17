@@ -7,10 +7,10 @@
     <PackageId>CountryRegion</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Version>1.0.3</Version>
-    <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh, Daberechi Ubachukwu, Alexandria Ogubuike</Authors>
+    <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh, Daberechi Ubachukwu, Alexandra Ogubuike</Authors>
     <Company>Tenece professional services</Company>
     <Product>CountryRegion</Product>
-    <Description>A cascading dropdown for loading countries and associated states and local goverments.</Description>
+    <Description>A cascading dropdown for loading countries and associated states and local governments.</Description>
     <PackageProjectUrl>https://github.com/Slimcent/CountryRegion</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Slimcent/CountryRegion</RepositoryUrl>
     <PackageTags>Country, Region, States, Local Government Area</PackageTags>
