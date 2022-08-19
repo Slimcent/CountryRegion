@@ -6,8 +6,8 @@
     <Nullable>enable</Nullable>
     <PackageId>CountryRegion</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.3</Version>
-    <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh, Daberechi Ubachukwu, Alexandra Ogubuike</Authors>
+    <Version>1.0.4</Version>
+    <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh, Daberechi Ubachukwu, Alexander Ogubuike</Authors>
     <Company>Tenece professional services</Company>
     <Product>CountryRegion</Product>
     <Description>A cascading dropdown for loading countries and associated states and local governments.</Description>
