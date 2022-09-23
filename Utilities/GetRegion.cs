@@ -10,9 +10,10 @@ namespace CountryRegion.Utilities
     internal static class GetRegion
     {
         private static RestClient? _client;
-        private static string CountriesFileName { get; set; } = "v1657709078/ez3kg2u8l5uqs3tiluy5.json";
-        //private static string NGSatesAndLGAsFileName { get; set; } = "v1660727123/yrguxcxv6zshgihr79qd.json";
-        private static string NGSatesAndLGAsFileName { get; set; } = "v1663328828/dy1aiwk8vnsgop9v607y.json";
+        //private static string CountriesFileName { get; set; } = "v1657709078/ez3kg2u8l5uqs3tiluy5.json";
+        private static string CountriesFileName { get; set; } = "Countries.json";
+        //private static string NGSatesAndLGAsFileName { get; set; } = "v1663328828/dy1aiwk8vnsgop9v607y.json";
+        private static string NGSatesAndLGAsFileName { get; set; } = "NigerianStates.json";
                
         internal static async Task<IEnumerable<Response?>> Countries()
         {
@@ -173,7 +174,9 @@ namespace CountryRegion.Utilities
 
         private static RestClient GetClient()
         {
-            _client = null ?? new RestClient("https://res.cloudinary.com/https-tenece-com/raw/upload/");
+            _client = null ?? new RestClient("https://smcore.blob.core.windows.net/countryregion/");
+
+            //_client = null ?? new RestClient("https://res.cloudinary.com/https-tenece-com/raw/upload/");
 
             return _client;
         }
