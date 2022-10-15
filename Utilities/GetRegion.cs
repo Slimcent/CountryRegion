@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CountryRegion.Utilities
@@ -10,169 +11,137 @@ namespace CountryRegion.Utilities
     internal static class GetRegion
     {
         private static RestClient? _client;
-        private static string CountriesFileName { get; set; } = "Countries.json";
+        // private static string CountriesFileName { get; set; } = "Countries.json";
+        private static string CountriesFileName { get; set; } = "13515537b82fb331222e";
         private static string NGSatesAndLGAsFileName { get; set; } = "NigerianStates.json";
-               
+
         internal static async Task<IEnumerable<Response?>> Countries()
         {
-            dynamic? objs = await GetObject(CountriesFileName);
+            List<dynamic>? objs = await GetObject(CountriesFileName);
 
-            IList<Response> responses = new List<Response>();
 
-            if (objs == null) return responses;
+            if (objs == null) return Array.Empty<Response?>();
 
-            foreach (var obj in objs)
+            IEnumerable<Response?> response = objs.Select(o => new Response
             {
-                string country = Convert.ToString(obj.country);
+                Name = o.country.name,
+                Id = o.country.id,
+            }).ToList();
 
-                Response? countryResponse = JsonConvert.DeserializeObject<Response>(country);
-
-                if (countryResponse != null) responses.Add(countryResponse);
-            }
-
-            return responses;
+            return response;
         }
 
         internal static async Task<IEnumerable<Response?>> States(int countryId)
         {
-            dynamic? objs = await GetObject(CountriesFileName);
+            List<dynamic>? objs = await GetObject(CountriesFileName);
 
             if (objs == null) return Array.Empty<Response>();
 
-            foreach (var obj in objs)
-            {
-                string country = Convert.ToString(obj.country);
+            dynamic? states = objs.SingleOrDefault(o => o.country.id == countryId)?.country.states;
 
-                Response? countryResponse = JsonConvert.DeserializeObject<Response>(country);
+            if (states == null) return Array.Empty<Response>();
 
-                if (countryResponse?.Id == countryId)
-                {
-                    string state = Convert.ToString(obj.country.state);
-
-                    return JsonConvert.DeserializeObject<IEnumerable<Response>>(state) ??
-                           Array.Empty<Response>();
-                }
-            }
-
-            return Array.Empty<Response>();
-        }        
+            return JsonConvert.DeserializeObject<IEnumerable<Response>>(Convert.ToString(states)) ??
+                   Array.Empty<Response>();
+        }
 
         internal static async Task<IEnumerable<Response?>> LGAs(int countryId, int stateId)
         {
-            if (countryId != 160) return Array.Empty<Response>();
+            if (countryId != Constants.NigeriaCountryId) return Array.Empty<Response>();
 
-            dynamic? objs = await GetObject(NGSatesAndLGAsFileName);
+            List<dynamic>? objs = await GetObject(CountriesFileName);
 
-            if (objs == null) return Array.Empty<Response>();
+            dynamic? states = objs.SingleOrDefault(o => o.country.id == countryId)?.country.states;
 
-            foreach (var obj in objs)
-            {
-                int _stateId = obj.state.id;
+            if (states == null) return Array.Empty<Response>();
 
+            List<dynamic>? statesEnumerable = JsonConvert.DeserializeObject<List<dynamic>>(Convert.ToString(states));
 
-                if (_stateId == stateId)
-                {
-                    string LGAs = Convert.ToString(obj.state.locals);
+            dynamic? locals = statesEnumerable.SingleOrDefault(s => s.id == stateId)?.locals;
 
-                    return JsonConvert.DeserializeObject<IEnumerable<Response>>(LGAs) ??
-                           Array.Empty<Response>();
-                }
-            }
+            if (locals == null) return Array.Empty<Response>();
 
-            return Array.Empty<Response>();
+            return JsonConvert.DeserializeObject<IEnumerable<Response>>(Convert.ToString(locals)) ??
+                   Array.Empty<Response>();
+
         }
 
         internal static async Task<Response?> Country(int id)
         {
-            dynamic? objs = await GetObject(CountriesFileName);
+            List<dynamic>? objs = await GetObject(CountriesFileName);
 
             if (objs == null) return null;
 
-            foreach (var obj in objs)
-            {
-                int countryId = obj.country.id;
-                string country = Convert.ToString(obj.country);
+            string? countryObj = Convert.ToString(objs.SingleOrDefault(o => o.country.id == id)?.country);
 
-                if (countryId == id)
-                {
-                    return JsonConvert.DeserializeObject<Response>(country);
-                }
-            }
-
-            return null;
+            return countryObj == null ? null : JsonConvert.DeserializeObject<Response?>(countryObj);
         }
 
 
         internal static async Task<Response?> State(int countryId, int statedId)
         {
-            dynamic objs = await GetObject(CountriesFileName);
+            List<dynamic>? objs = await GetObject(CountriesFileName);
+
+            dynamic? states = objs.SingleOrDefault(o => o.country.id == countryId)?.country.states;
+
+            if (states == null) return null;
+
+            List<dynamic>? statesEnumerable = JsonConvert.DeserializeObject<List<dynamic>>(Convert.ToString(states));
+
+            string? state = Convert.ToString(statesEnumerable.SingleOrDefault(s => s.id == statedId));
+
+            return state == null ? null : JsonConvert.DeserializeObject<Response?>(state);
+        }
+
+        internal static async Task<Response?> LGA(int stateId, int? lgaId)
+        {
+            List<dynamic>? objs = await GetObject(CountriesFileName);
 
             if (objs == null) return null;
 
-            foreach (var obj in objs)
-            {
-                if (obj.country.id != countryId) continue;
+            dynamic? states = objs.SingleOrDefault(o => o.country.id == Constants.NigeriaCountryId)?.country.states;
 
-                dynamic state = obj.country.state;
+            if (states == null) return null;
 
-                foreach (var stateObj in state)
-                {
-                    if (stateObj.id != statedId) continue;
+            List<dynamic>? statesEnumerable = JsonConvert.DeserializeObject<List<dynamic>>(Convert.ToString(states));
 
-                    string _state = Convert.ToString(stateObj);
+            dynamic? locals = statesEnumerable.SingleOrDefault(s => s.id == stateId)?.locals;
 
-                    return JsonConvert.DeserializeObject<Response>(_state);
-                }
-            }
+            if (locals == null) return null;
 
-            return null;
+            List<dynamic>? localsEnumerable = JsonConvert.DeserializeObject<List<dynamic>?>(Convert.ToString(locals));
+
+            dynamic? lga = Convert.ToString(localsEnumerable.SingleOrDefault(l => l.id == lgaId));
+
+            return lga == null ? null : (Response?) JsonConvert.DeserializeObject<Response?>(lga);
         }
 
-
-        internal static async Task<Response?> LGA(int statedId, int? lgaId)
+        private static async Task<List<object>?> GetObject(string fileName)
         {
-            dynamic? objs = await GetObject(NGSatesAndLGAsFileName);
+            RestClient client = GetClient();
 
-            if (objs == null) return null;
+            RestRequest request = new RestRequest(fileName);
 
-            foreach (var obj in objs)
-            {
-                if (obj.state.id != statedId) continue;
-
-                dynamic local = obj.state.locals;
-
-                foreach (var localObj in local)
-                {
-                    if (localObj.id != lgaId) continue;
-
-                    string _local = Convert.ToString(localObj);
-
-                    return JsonConvert.DeserializeObject<Response>(_local);
-                }
-            }
-
-            return null;
-        }
-
-        private static async Task<dynamic?> GetObject(string fileName)
-        {
-            var client = GetClient();
-
-            var request = new RestRequest(fileName);
-
-            var response = await client.ExecuteGetAsync(request);
+            IRestResponse response = await client.ExecuteGetAsync(request);
 
             if (!response.IsSuccessful)
                 throw new Exception("Api call was not successful, check your network");
 
             string content = response.Content;
 
-            return JsonConvert.DeserializeObject<dynamic>(content);
+            return JsonConvert.DeserializeObject<List<dynamic>>(content);
+        }
+
+        internal static async Task<List<object>?> GetDump()
+        {
+            return await GetObject(CountriesFileName);
         }
 
         private static RestClient GetClient()
         {
-            _client = null ?? new RestClient("https://smcore.blob.core.windows.net/countryregion/");
+
+            // _client = null ?? new RestClient("https://smcore.blob.core.windows.net/countryregion/");
+            _client = null ?? new RestClient("https://api.npoint.io/");
 
             //_client = null ?? new RestClient("https://res.cloudinary.com/https-tenece-com/raw/upload/");
 
