@@ -7,6 +7,11 @@ namespace CountryRegion
 {
     public static class Region
     {
+
+        public static async Task<List<dynamic>?> GetObject()
+        {
+            return await GetRegion.GetDump();
+        }
         public static async Task<IEnumerable<Response?>> GetCountries()
         {
             return await GetRegion.Countries();
