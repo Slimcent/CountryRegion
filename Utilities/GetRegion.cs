@@ -11,10 +11,9 @@ namespace CountryRegion.Utilities
     internal static class GetRegion
     {
         private static RestClient? _client;
-        // private static string CountriesFileName { get; set; } = "Countries.json";
-        private static string CountriesFileName { get; set; } = "13515537b82fb331222e";
-        private static string NGSatesAndLGAsFileName { get; set; } = "NigerianStates.json";
-
+        private static string CountriesFileName { get; set; } = "Countries.json";
+        // private static string CountriesFileName { get; set; } = "13515537b82fb331222e";
+        
         internal static async Task<IEnumerable<Response?>> Countries()
         {
             List<dynamic>? objs = await GetObject(CountriesFileName);
@@ -139,12 +138,8 @@ namespace CountryRegion.Utilities
 
         private static RestClient GetClient()
         {
-
-            // _client = null ?? new RestClient("https://smcore.blob.core.windows.net/countryregion/");
-            _client = null ?? new RestClient("https://api.npoint.io/");
-
-            //_client = null ?? new RestClient("https://res.cloudinary.com/https-tenece-com/raw/upload/");
-
+            _client = null ?? new RestClient("https://smcore.blob.core.windows.net/countryregion/");
+            // _client = null ?? new RestClient("https://api.npoint.io/");
             return _client;
         }
     }
