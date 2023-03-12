@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <PackageId>CountryRegion</PackageId>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Version>1.0.7</Version>
+    <Version>1.0.8</Version>
     <Authors>Slimcent, Chidiebube Onah, Ugochukwu Udeh, Daberechi Ubachukwu, Alexander Ogubuike, Albert Tarkaa</Authors>
     <Company>Tenece professional services</Company>
     <Product>CountryRegion</Product>
