@@ -23,7 +23,7 @@ Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-2.6
 First, install NuGet. Then, install CountryRegion from the package manager console:
 
 ```C#   
-   NuGet\Install-Package CountryRegion -Version 1.0.10
+   NuGet\Install-Package CountryRegion -Version 1.0.9
 ```
  This command is intended to be used within the Package Manager Console in Visual Studio, as it uses the NuGet module's version of Install-Package.
 
