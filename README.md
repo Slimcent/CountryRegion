@@ -1,4 +1,4 @@
-![CountryRegion A cascading dropdown for loading countries and associated states and local governments.](raw.githubusercontent.com/Slimcent/CountryRegion/master/images/CountryRegion.png)
+![CountryRegion A cascading dropdown for loading countries and associated states and local governments.](https://raw.githubusercontent.com/Slimcent/CountryRegion/master/images/CountryRegion.png)
 
 # CountryRegion
 
@@ -7,6 +7,9 @@ A cascading dropdown for loading countries and associated states and local gover
 ## Badges
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+
+stable release version: ![version](https://img.shields.io/badge/version-1.0.10-blue)
+
 
 Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-2.6K-brightgreen)
 
