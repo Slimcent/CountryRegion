@@ -79,8 +79,8 @@ Finally, import into the file:
 
 - Input
 
-| Parameters	| Type		| Description								 |
-| :--------		| :-------	| :-------------------------				 |
+| Parameters	| Type		| Description															|
+| :--------		| :-------	| :-------------------------											|
 | `countryId`,	| `int`		| **Required**. The id of the country to get the local governments from |
 | `stateId`		| `int`		| **Required**. The id of the state to get the local governments from	|
 
