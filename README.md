@@ -23,14 +23,14 @@ Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-2.6
 First, install NuGet. Then, install CountryRegion from the package manager console:
 
 ```C#   
-   NuGet\Install-Package CountryRegion -Version 1.0.9
+   NuGet\Install-Package CountryRegion -Version 1.0.10
 ```
  This command is intended to be used within the Package Manager Console in Visual Studio, as it uses the NuGet module's version of Install-Package.
 
 
 Or from the .NET CLI as:
 ```C#   
-   dotnet add package CountryRegion --version 1.0.8
+   dotnet add package CountryRegion --version 1.0.10
 ```
 
 Finally, import into the file:
@@ -84,7 +84,7 @@ Finally, import into the file:
 
 | Parameters	| Type		| Description															|
 | :--------		| :-------	| :-------------------------											|
-| `countryId`,	| `int`		| **Required**. The id of the country to get the local governments from |
+| `countryId`	| `int`		| **Required**. The id of the country to get the local governments from |
 | `stateId`		| `int`		| **Required**. The id of the state to get the local governments from	|
 
 - Output
@@ -119,7 +119,7 @@ Finally, import into the file:
 
 | Parameters	| Type     | Description											|
 | :--------		| :------- | :-------------------------								|
-| `countryId`,  | `int`	| **Required**. The id of the country to get a state from	|
+| `countryId`  | `int`	| **Required**. The id of the country to get a state from	|
 | `stateId`		| `int`	| **Required**. The id of the state to get					|
 
 - Output
