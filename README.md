@@ -8,10 +8,10 @@ A cascading dropdown for loading countries and associated states and local gover
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-stable release version: ![version](https://img.shields.io/badge/version-1.0.9-blue)
+stable release version: ![version](https://img.shields.io/badge/version-1.0.10-blue)
 
 
-Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-2.6K-brightgreen)
+Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-2.9K-brightgreen)
 
 ## Tech Stack
 
@@ -23,14 +23,14 @@ Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-2.6
 First, install NuGet. Then, install CountryRegion from the package manager console:
 
 ```C#   
-   NuGet\Install-Package CountryRegion -Version 1.0.9
+   NuGet\Install-Package CountryRegion -Version 1.0.10
 ```
  This command is intended to be used within the Package Manager Console in Visual Studio, as it uses the NuGet module's version of Install-Package.
 
 
 Or from the .NET CLI as:
 ```C#   
-   dotnet add package CountryRegion --version 1.0.8
+   dotnet add package CountryRegion --version 1.0.10
 ```
 
 Finally, import into the file:
@@ -58,7 +58,7 @@ Finally, import into the file:
 | :------- |
 | `Task<IEnumerable<Response?>>` |
 
-
+---
 ```C#
    await Region.GetStates(countryId);
 ```
@@ -75,7 +75,7 @@ Finally, import into the file:
 | :-------						 |
 | `Task<IEnumerable<Response?>>` |
 
-
+---
 ```C#
    await Region.GetLGAs(countryId, stateId);
 ```
@@ -93,7 +93,7 @@ Finally, import into the file:
 | :-------						 |
 | `Task<IEnumerable<Response?>>` |
 
-
+---
 ```C#
    await Region.GetCountry(countryId);
 ```
@@ -110,7 +110,7 @@ Finally, import into the file:
 | :-------			|
 | `Task<Response?>` |
 
-
+---
 ```C#
    await Region.GetState(countryId, stateId);
 ```
@@ -128,7 +128,7 @@ Finally, import into the file:
 | :-------			|
 | `Task<Response?>`	|
 
-
+---
 ```C#
    await Region.GetLGA(stateId, lgaId);
 ```
