@@ -8,10 +8,10 @@ A cascading dropdown for loading countries and associated states and local gover
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
-stable release version: ![version](https://img.shields.io/badge/version-1.0.10-blue)
+stable release version: ![version](https://img.shields.io/badge/version-1.1.0-blue)
 
 
-Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-2.9K-brightgreen)
+Nuget package downloads: ![downloads](https://img.shields.io/badge/downloads-4.1K-brightgreen)
 
 ## Tech Stack
 
