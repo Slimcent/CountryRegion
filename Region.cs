@@ -32,9 +32,19 @@ namespace CountryRegion
             return await GetRegion.LGA(statedId, lgaId);
         }
 
+        public static Response? GetLGA(List<dynamic> objs, int statedId, int? lgaId)
+        {
+            return objs.LGA(statedId, lgaId);
+        }
+
         public static async Task<Response?> GetState(int countryId, int stateId)
         {
             return await GetRegion.State(countryId, stateId);
+        }
+
+        public static Response? GetState(List<dynamic> objs, int countryId, int stateId)
+        {
+            return objs.State(countryId, stateId);
         }
 
         public static async Task<Response?> GetCountry(int id)

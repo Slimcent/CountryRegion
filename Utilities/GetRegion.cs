@@ -92,6 +92,19 @@ namespace CountryRegion.Utilities
             return state == null ? null : JsonConvert.DeserializeObject<Response?>(state);
         }
 
+        internal static Response? State(this List<dynamic> objs, int countryId, int statedId)
+        {
+            dynamic? states = objs.SingleOrDefault(o => o.country.id == countryId)?.country.states;
+
+            if (states == null) return null;
+
+            List<dynamic>? statesEnumerable = JsonConvert.DeserializeObject<List<dynamic>>(Convert.ToString(states));
+
+            string? state = Convert.ToString(statesEnumerable.SingleOrDefault(s => s.id == statedId));
+
+            return state == null ? null : JsonConvert.DeserializeObject<Response?>(state);
+        }
+
         internal static async Task<Response?> LGA(int stateId, int? lgaId)
         {
             List<dynamic>? objs = await GetObject(CountriesFileName);
@@ -113,6 +126,27 @@ namespace CountryRegion.Utilities
             dynamic? lga = Convert.ToString(localsEnumerable.SingleOrDefault(l => l.id == lgaId));
 
             return lga == null ? null : (Response?) JsonConvert.DeserializeObject<Response?>(lga);
+        }
+
+        internal static Response? LGA(this List<dynamic> objs, int stateId, int? lgaId)
+        {
+            if (objs == null) return null;
+
+            dynamic? states = objs.SingleOrDefault(o => o.country.id == Constants.NigeriaCountryId)?.country.states;
+
+            if (states == null) return null;
+
+            List<dynamic>? statesEnumerable = JsonConvert.DeserializeObject<List<dynamic>>(Convert.ToString(states));
+
+            dynamic? locals = statesEnumerable.SingleOrDefault(s => s.id == stateId)?.locals;
+
+            if (locals == null) return null;
+
+            List<dynamic>? localsEnumerable = JsonConvert.DeserializeObject<List<dynamic>?>(Convert.ToString(locals));
+
+            dynamic? lga = Convert.ToString(localsEnumerable.SingleOrDefault(l => l.id == lgaId));
+
+            return lga == null ? null : (Response?)JsonConvert.DeserializeObject<Response?>(lga);
         }
 
         private static async Task<List<object>?> GetObject(string fileName)
