@@ -147,6 +147,54 @@ Finally, import into the file:
 | `Task<Response?>` |
 
 
+### `GetState` Extension Method
+
+---
+```C#
+   await Region.GetState(List<dynamic> objs, countryId, stateId);
+```
+
+Retrieves a specific state based on the provided parameters.
+
+#### Input
+
+| Parameters     | Type       | Description                                         |
+| :------------- | :--------- | :-------------------------------------------------- |
+| `objs`         | `List<dynamic>` | **Required**. A list of objects representing the states. |
+| `countryId`    | `int`      | **Required**. The ID of the country to retrieve the state from. |
+| `stateId`      | `int`      | **Required**. The ID of the state to retrieve.       |
+
+#### Output
+
+| Type                 |
+| :------------------- |
+| `Response`    |
+
+
+### `GetLGA` Extension Method
+
+---
+```C#
+   await Region.GetLGA(List<dynamic> objs, stateId, lgaId);
+```
+
+Retrieves a specific Local Government Area (LGA) based on the provided parameters.
+
+#### Input
+
+| Parameters	| Type       | Description                                        |
+| :----------	| :--------- | :------------------------------------------------- |
+| `objs`     	| `List<dynamic>` | **Required**. A list of objects representing the LGAs. |
+| `stateId`  	| `int`      | **Required**. The ID of the state to retrieve the LGA from. |
+| `lgaId`    	| `int?`     | The ID of the specific LGA to retrieve (optional). If not provided, its assumed the state has no LGA |
+
+#### Output
+
+| Type                 |
+| :------------------- |
+| `Response`    |
+
+
 
 ## Thanks to all Contributors
 
