@@ -203,7 +203,7 @@ Maintainers:
 - [slimcent](https://github.com/Slimcent) 
 - [king-Alex-d-great](https://github.com/king-Alex-d-great)
 - [sixxxxxxxxxxx](https://github.com/sixxxxxxxxxxx)
-- [bubethedev](https://github.com/bubethedev)
+- [Chidiebube](https://github.com/Chidiebube)
 - [dabz-codes](https://github.com/dabz-codes)
 - [albert-tarkaa](https://github.com/albert-tarkaa)
 
