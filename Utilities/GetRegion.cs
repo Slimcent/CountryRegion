@@ -172,7 +172,7 @@ namespace CountryRegion.Utilities
 
         private static RestClient GetClient()
         {
-            _client = null ?? new RestClient("https://smcore.blob.core.windows.net/countryregion/");
+            _client = null ?? new RestClient("https://smcore1.blob.core.windows.net/countryregion/");
             // _client = null ?? new RestClient("https://api.npoint.io/");
             return _client;
         }
